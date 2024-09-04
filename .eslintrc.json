@@ -1,3 +1,94 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    // General ESLint rules
+    //If you want to Turn off any rules please use >- "rule-name": "off" 
+    "no-console": "warn", // Warn about console.log statements
+    "no-debugger": "warn", // Warn about debugger statements
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }], // Warn about unused variables except those starting with _
+    "no-undef": "error", // Error on undefined variables
+    "eqeqeq": ["error", "always"], // Enforce strict equality
+    "no-empty": ["error", { "allowEmptyCatch": true }], // Disallow empty blocks, but allow empty catch blocks
+    "no-throw-literal": "error", // Disallow throwing literals as exceptions
+    "curly": ["error", "all"], // Enforce consistent brace style for all control statements
+    "default-case": "warn", // Warn about missing default cases in switch statements
+    "no-eq-null": "off", // Allow comparisons to null
+    "no-magic-numbers": ["warn", { "ignore": [0, 1], "ignoreArrayIndexes": true }], // Avoid magic numbers, except for 0 and 1
+
+    // React-specific rules
+    "react/react-in-jsx-scope": "off", // Next.js handles React in scope automatically
+    "react/prop-types": "off", // PropTypes are not needed with TypeScript
+    "react/jsx-no-target-blank": "warn", // Warn about `target="_blank"` without rel="noopener noreferrer"
+    "react/jsx-uses-react": "off", // React is not required to be in scope with React 17+
+    "react/jsx-uses-vars": "error", // Ensure JSX variables are used
+    "react/jsx-indent": ["error", 2], // Enforce 2-space indentation in JSX
+    "react/jsx-key": "error", // Ensure all JSX elements have a key
+    "react/jsx-no-duplicate-props": "error", // Disallow duplicate props in JSX
+
+    // React Hooks rules
+    "react-hooks/rules-of-hooks": "error", // Enforce rules of hooks
+    "react-hooks/exhaustive-deps": "warn", // Warn about missing dependencies in effect hooks
+
+    // Accessibility rules (via `jsx-a11y` plugin)
+    "jsx-a11y/anchor-is-valid": "warn", // Ensure `<a>` elements are valid
+    "jsx-a11y/alt-text": "warn", // Ensure image elements have alt text
+    "jsx-a11y/label-has-associated-control": "warn", // Ensure labels are associated with form controls
+    "jsx-a11y/role-has-required-aria-props": "warn", // Ensure roles have required ARIA properties
+    "jsx-a11y/aria-props": "warn", // Ensure ARIA props are valid
+    "jsx-a11y/aria-role": "warn", // Ensure ARIA roles are valid
+    "jsx-a11y/aria-unsupported-elements": "warn", // Ensure ARIA attributes are not used on unsupported elements
+
+    // Import rules (via `import` plugin)
+    "import/order": ["error", { "groups": ["builtin", "external", "internal"], "newlines-between": "always" }], // Enforce import order and newlines between groups
+    "import/named": "error", // Ensure named imports correspond to named exports
+    "import/namespace": "error", // Ensure namespace imports correspond to namespace exports
+    "import/default": "error", // Ensure default imports correspond to default exports
+    "import/no-unresolved": "error", // Ensure imports resolve to valid files
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": false }], // Ensure no extraneous dependencies are imported
+
+    // TypeScript rules (if applicable)
+    // "@typescript-eslint/explicit-module-boundary-types": "off", // Disable explicit return type requirement
+    // "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }], // Warn about unused variables except those starting with _
+    // "@typescript-eslint/no-explicit-any": "warn", // Warn about usage of `any` type
+    // "@typescript-eslint/ban-ts-comment": "warn", // Warn about @ts-ignore comments
+
+    // Code style rules
+    "indent": ["error", 2], // Enforce 2-space indentation
+    "linebreak-style": ["error", "unix"], // Enforce Unix linebreaks
+    "max-len": ["warn", { "code": 80 }], // Enforce a maximum line length of 80 characters
+    "quotes": ["error", "single"], // Enforce single quotes
+    "semi": ["error", "always"], // Enforce semicolons at the end of statements
+    "camelcase": ["error", { "properties": "always" }], // Enforce camelCase naming convention
+
+    // Miscellaneous rules
+    "no-duplicate-imports": "error", // Disallow duplicate imports
+    "no-restricted-imports": ["error", { "paths": ["lodash", "moment"] }], // Disallow specific imports
+    "no-restricted-syntax": ["error", "WithStatement"], // Disallow specific syntax
+    "prefer-const": "warn", // Suggest using `const` for variables that are never reassigned
+    "prefer-template": "warn" // Suggest using template literals instead of string concatenation
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Automatically detect the React version
+    },
+    "import/resolver": {
+      "typescript": {} // Resolve imports with TypeScript
+    }
+  }
 }
